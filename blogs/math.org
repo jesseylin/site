@@ -1,0 +1,26 @@
+#+title: Math
+#+date: 2022-12-09T19:53:33+05:30
+#+author: Jesse Young Lin
+#+mathjax: true
+* Mathjax from Org mode
+$$ | Pr*{x \leftarrow P*{1}} [A(x) = 1] - Pr*{x \leftarrow P*{2}} [A(x) = 1] | < \text{negligible} $$
+
+The following should equation number...
+\begin{equation}
+  \label{hi}
+  \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15}
+\end{equation}
+This is: \eqref{hi}
+
+Moreover,
+\begin{align*}
+\vb{F} = m \vb{a}
+\end{align*}
+
+Now try, some source code
+
+#+begin_src julia
+function hello(x)
+    return x
+end
+#+end_src
