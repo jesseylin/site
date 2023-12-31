@@ -1,8 +1,8 @@
-#+title: Math
+#+title: Mathjax converted from Org mode
 #+date: 2022-12-09T19:53:33+05:30
 #+author: Jesse Young Lin
-#+mathjax: true
-* Mathjax from Org mode
+#+feature:
+Start with something random.
 $$ | Pr*{x \leftarrow P*{1}} [A(x) = 1] - Pr*{x \leftarrow P*{2}} [A(x) = 1] | < \text{negligible} $$
 
 The following should equation number...
@@ -24,3 +24,11 @@ function hello(x)
     return x
 end
 #+end_src
+
+We can do inline with backslashed parentheses =\(hi\)=, for \(E = mc^{2}\)
+
+Now, let's insert a picture.
+
+{{< figure src="cover.jpg" title="My sample photo" caption="My sample photo" >}}
+
+[[http://localhost:1313/blogs/dummy][Here's a link]]

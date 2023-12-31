@@ -1,0 +1,2 @@
+#+title: Dummy post
+I exist only to be linked to.
