@@ -138,8 +138,8 @@ website is a whole 'nother ball-game, of which there are many nice expositions o
 [fn:1]
 Terminology may be the hardest challenge about Nix. This is the glossary:
 Nix is a functional programming language invented to build and package software.
-Therefore, we may synonymously call Nix a build tool, as its existence as a language is not that interesting and arguably a bad decision. However we note also that =nix= is a commandline tool written in C, which is more accurately the build tool. =nixpkgs= is a gigantic software repository, which is itself built using Nix
-(the build tool). Finally, NixOS is a Linux distribution which builds its own
+Therefore, we may synonymously call Nix a build tool, as its existence as a language is not that interesting and arguably a bad decision. However we note also that [[https://github.com/NixOS/nix][=nix=]] is a commandline tool written in C++, which is more accurately the build tool. [[https://github.com/NixOS/nixpkgs][=nixpkgs=]] is a gigantic software repository, which is itself built using Nix
+(the build tool). Finally, [[https://nixos.org][NixOS]] is a Linux distribution which builds its own
 configurational state using Nix (the build tool).
 
 [fn:2]
