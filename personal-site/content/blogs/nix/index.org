@@ -1,0 +1,21 @@
+#+title: Ramblings about Nix
+#+draft: true
+What this means is that one can mathematically guarantee that given
+a finite set of known inputs, Nix can deterministically build a software package
+which is always bit-for-bit identical to any other build with these inputs.
+
+Let's be clear that this task is very hard. In discussing Nix with some tech
+friends, I posed the following coding problem (and wrongly attributed it to
+Donald Knuth):
+#+begin_quote
+Write a program which compiles to a binary that, upon execution, prints its own source code.
+#+end_quote
+I encourage the reader to think about this problem for a little bit to get a
+sense for its difficulty.
+
+Indeed, to create a reproducible build tool, you have to handle the fact that
+the build process itself depends on the build tool. In fact, the above problem
+is easiest to solve using functional programming, giving us
+[[https://edolstra.github.io/pubs/phd-thesis.pdf]["The Purely Functional
+Software Deployment Model"]], a PhD dissertation on Nix by its inventor, the
+Dutchman Eelco Dolstra, who named the tool after the Dutch word for "nothing".
