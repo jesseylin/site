@@ -1,0 +1,149 @@
+#+title: Building a Static Site with Nix
+#+date: Mon Jan  1 00:58:32 CST 2024
+#+author: Jesse Young Lin
+
+To start 2024, I built this website using Nix. This blogpost is a very brief
+summary of this process, assuming some basic familiarity with Nix syntax. It
+consists of all the essential points needed to understand this amazing
+technology while mentioning the words "functional programming" only twice.
+
+Anyone who has tried to learn this tool has experienced the utter dearth of
+pedagogical content about it on the internet. Hopefully, this blogpost can
+rectify a little confusion for someone.
+* Why Nix?
+There's plenty of propaganda about why Nix is cool already. One could at least
+skim [[https://en.wikipedia.org/wiki/Nix_(package_manager)][its Wikipedia
+page.]] Let me summarize it: *Nix allows binary-reproducible builds of arbitrary
+software*. I could ramble more, but let me defer it to a separate blogpost.
+* Getting Started: A Flake for Development
+First, we define something called a *flake*, which is nothing more than a schema which is read by the commandline tool also called =nix=.[fn:1]
+#+begin_src nix
+{
+  description = "Build for my static site.";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        devShells.default = pkgs.mkShell { packages = [ pkgs.hugo ]; };
+      });
+}
+#+end_src
+
+The schema declares =inputs= which are the dependencies of the build and =outputs= which are the outputs produced by the build. Currently, we declare only one category of output called =devShells=. Essentially, this is an environment which contains the package [[https://gohugo.io][Hugo]], which is the static site generator we will use to build our site. According to the flake schema, the commandline tool =nix= knows that if one executes =nix shell .= it should drop the user into an inferior shell which has access to the =hugo= executable.
+
+What this means is now one can develop the site using your tool =hugo=. Awesome. This isn't a Hugo tutorial, though, so let's move on.
+
+* Building the Site
+We define the following function in a file called =site.nix=:
+#+begin_src nix
+{ stdenv, hugo }:
+
+stdenv.mkDerivation rec {
+  name = "jesseylin.com";
+  version = "1.0";
+  src = ...;
+  nativeBuildInputs = [ hugo ];
+  buildPhase = ...;
+  installPhase = ...;
+}
+#+end_src
+It takes two inputs, =stdenv= and =hugo=, which are attributes of the ginormous
+attribute set called =nixpkgs= (in other words, they are packages). Given these
+two inputs, we assemble an attribute set of an appropriate schema such that the
+function =stdenv.mkDerivation= gives us something called a *derivation*.[fn:2]
+This is the standard format for specifying a package to be upstreamed into the
+ginormous package repository known as =nixpkgs=. Given that Nix guarantees binary reproducibility, this specification is in some sense equivalent to the software package itself. After we replace the ellipses with actual instructions, of course...
+
+For a simple build, the plan of action is simple. We declare =src= to be the
+source code of the build. We declare the =nativeBuildInputs= as other software
+packages which we need in the build process ("compile-time dependencies"). We
+declare some instructions in =buildPhase= and =installPhase= which correspond to
+how we build the package and how we would install the package on some
+hypothetical Linux distribution.
+
+With some details filled in:
+#+begin_src nix
+{ self, stdenv, hugo }:
+
+stdenv.mkDerivation rec {
+  name = "jesseylin.com";
+  version = "1.0";
+  src = self;
+  nativeBuildInputs = [ hugo ];
+  buildPhase = ''
+    ${hugo}/bin/hugo --gc --minify --source personal-site
+  '';
+  installPhase = ''
+    mkdir -p $out/var/www/${name}
+    cp -r personal-site/public/. $out/var/www/${name}
+  '';
+}
+#+end_src
+
+The only wrinkle here is we needed to add an input =self=. This corresponds to
+the fact that a flake can also be considered a Git repository of source code
+which contains a file =flake.nix= at its root directory. We will be giving this
+function to the flake, so it needs to correctly refer to itself as the source
+code from which to build.
+
+In essence, we are done. We have a function which produces some instructions
+that amount to running =hugo= to build our static site and then "installing" it
+by placing the bundle of HTML/CSS/JS artifacts into =/var/www/jesseylin.com=,
+which exists as a directory in the Nix store.
+* Calling our function from the Flake
+Let's update our flake to expose our new package in its schema.
+#+begin_src nix
+{
+  description = "Build for my static site.";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        packages.default = pkgs.callPackage ./site.nix { inherit self; };
+        devShells.default = pkgs.mkShell { packages = [ pkgs.hugo ]; };
+      });
+}
+#+end_src
+Now we are done. We have declared the output attribute =packages.default= which
+is what is looked for by =nix build .= to be the result of evaluating the
+function on the right-hand side. This function on the right-hand side is =pkgs.callPackage= which takes two arguments,
+1. a path (here, =./site.nix=) which points to a file containing a Nix function
+2. an attribute set, which specifies the "extra" inputs to the above function.
+We call =self= an "extra" input here because it does not obey the =nixpkgs=
+specification we discussed earlier, which is that a package is a Nix function
+which takes as input attributes of =nixpkgs= (i.e., other packages). Besides any
+such extra inputs which we declare explicitly, the duty of =pkgs.callPackage= is
+to call the function in =./site.nix= and give it any inputs it needs as long as
+they are attributes of =nixpkgs= (which =stdenv= and =hugo= are). Evaluating
+this function then outputs the derivation which we constructed before.
+
+* Conclusion and Deployment
+The upshot of our work is that we now have a specification which can fully
+reproducibly build this website you are reading now. The next question is how to
+deploy it. Spoiler alert: I host it on a server running NixOS. But deploying a
+website is a whole 'nother ball-game, of which there are many nice expositions online already.
+
+* Footnotes
+
+[fn:1]
+Terminology may be the hardest challenge about Nix. This is the glossary:
+Nix is a functional programming language invented to build and package software.
+Therefore, we may synonymously call Nix a build tool, as its existence as a language is not that interesting and arguably a bad decision. However we note also that =nix= is a commandline tool written in C, which is more accurately the build tool. =nixpkgs= is a gigantic software repository, which is itself built using Nix
+(the build tool). Finally, NixOS is a Linux distribution which builds its own
+configurational state using Nix (the build tool).
+
+[fn:2]
+As far as I know, a derivation is just an internal representation of a build which
+corresponds to the actual data produced by the build (i.e,. the binary output)
+in the sense that their hash is the same. This allows us to assemble the
+dependency graph of downstream builds by simply evaluating a Nix expression instead of having to actually compile software.
