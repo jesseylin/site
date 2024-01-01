@@ -9,7 +9,7 @@ title = "Jesse Young Lin"
 [params]
   dateFormat = "January 2, 2006"
 
-  mainSections = ["projects"]
+  mainSections = ["projects", "blogs"]
   description = "params.description"
 
 [author]
