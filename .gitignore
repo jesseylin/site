@@ -2,6 +2,7 @@
 .idea
 *.log
 tmp/
+.direnv
 
 personal-site/public/*
 personal-site/resources/*
