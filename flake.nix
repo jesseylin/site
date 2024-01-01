@@ -9,7 +9,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system};
       in {
-        packages = pkgs.callPackage ./site.nix { inherit self; };
+        packages.default = pkgs.callPackage ./site.nix { inherit self; };
         devShells.default = pkgs.mkShell { packages = [ pkgs.hugo ]; };
       });
 }
