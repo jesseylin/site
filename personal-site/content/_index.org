@@ -3,3 +3,6 @@
 I am currently a PhD student in Physics at the University of Chicago with the [[https://home.uchicago.edu/~vitelli][Vincenzo Vitelli group]], where I study broad questions in the physics of living systems regarding the theory of learning. My work involves scientific machine learning, the statistical physics of (deep) learning, and evolutionary adaptation.
 
 Before my PhD, I graduated with a degree in physics and applied mathematics from Princeton University in 2022 and worked as a machine learning research engineer before my PhD.
+* About this site
+Presumably at some point this website will contain a faithful reproduction of my
+CV. Until then, it is just a portal into one blog among many on software engineering topics, and maybe science someday.
