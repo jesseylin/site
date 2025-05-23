@@ -31,7 +31,7 @@ a^{2} + b^{2} = c^{2}
 \end{align}
 comes from the geometry of a right triangle with side lengths \(a, b, c\).
 
-We define, the square root function to solve for \(c\)
+We define the square root function to solve for \(c\)
 \begin{align}
 \label{eq:pythasqrt}
 c(a,b) = \sqrt{a^{2} + b^{2}}.
@@ -69,13 +69,13 @@ for \(x > 0\).
 The area under the curve from \(1\) to some point \(x\) is given by
 \begin{align}
 \label{eq:hyperbolaarea}
-A(x) = \int_{1}^{x} \frac{1}{y} \dd{y}
+A(x) = \int_{1}^{x} \frac{1}{t} \dd{t}
 \end{align}
 We don't know how to evaluate this integral, but we can simply define it as a
 new special function
 \begin{align}
 \label{eq:logint}
-\ln x := \int_{1}^{x} 1/y \dd{y}
+\ln x := \int_{1}^{x} \frac{1}{t} \dd{t}
 \end{align}
 called the *logarithm*. Even without computing it, we can see qualitatively
 that: the area is positive for \(x>1\), zero at \(x=1\), and strictly increases
@@ -107,7 +107,7 @@ case, let's study \(\exp\) and \(\ln\).
 It turns out that logarithms have a surprising property: if we rescale the
 length scale of the hyperbola in \eqref{eq:logint} by \(a\), the area scales as
 \begin{align}
-\int_{x_{1}}^{x_{2}} \frac{1}{y} \dd{y} = \int^{a x_{2}}_{a x_{1}} \frac{1}{y}\dd{y}
+\int_{x_{1}}^{x_{2}} \frac{1}{t} \dd{t} = \int^{a x_{2}}_{a x_{1}} \frac{1}{t}\dd{t}
 \end{align}
 from which one can derive[fn:2] the miraculous property
 \begin{align}
@@ -199,10 +199,10 @@ which abounds in "pop math" Youtube.
 
 [fn:2] For \(x_2 \geq x_{1} > 1\), we have
 \begin{align*}
-\ln(x_{1}x_{2}) &= \int_{1}^{x_{1}x_{2}} \frac{1}{y}\dd{y} \\
-      &= \int^{x_{1}}_{1/x_{2}} \frac{1}{y} \dd{y} \\
-      &= \int_{1/x_{2}}^{1} \frac{1}{y} \dd{y} + \int_{1}^{x_{1}} \frac{1}{y} \dd{y} \\
-      &= \int_{1}^{x_{2}} \frac{1}{y} \dd{y} + \int_{1}^{x_{1}} \frac{1}{y} \dd{y} \\
+\ln(x_{1}x_{2}) &= \int_{1}^{x_{1}x_{2}} \frac{1}{t}\dd{t} \\
+      &= \int^{x_{1}}_{1/x_{2}} \frac{1}{t} \dd{t} \\
+      &= \int_{1/x_{2}}^{1} \frac{1}{t} \dd{t} + \int_{1}^{x_{1}} \frac{1}{t} \dd{t} \\
+      &= \int_{1}^{x_{2}} \frac{1}{t} \dd{t} + \int_{1}^{x_{1}} \frac{1}{t} \dd{t} \\
       &= \ln x_{2} + \ln x_{1}.
 \end{align*}
 
@@ -213,7 +213,7 @@ one can proceed from the integral definition, using the left Riemann sum estimat
 \end{align}
 which is accurate if \(x_{2}\) is very close to \(x_{1}\). Then,
 \begin{align}
-\ln(1 + x) = \int_{1}^{1+x} \frac{1}{y}\dd{y} \approx x.
+\ln(1 + x) = \int_{1}^{1+x} \frac{1}{t}\dd{t} \approx x.
 \end{align}
 
 [fn:4] In order to take the identity \eqref{eq:explaw} as a definition, we need
