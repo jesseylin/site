@@ -17,7 +17,7 @@ simply not equipped to /actually solve/ problems with infinite limits--that's
 what calculus is for, which many never take. So, scores of students are left
 with an impression of \(e\) as mysterious and magical.[fn:1]
 
-In contrsat, other famous irrational numbers like \(\pi\) or even
+In contrast, other famous irrational numbers like \(\pi\) or even
 \(\sqrt{2}\) are taught from concrete, geometric problems. This blog post tries
 to put \(e\) on similar footing, starting with geometry and calculus and
 arriving at the familiar compound interest formula only at the end.
