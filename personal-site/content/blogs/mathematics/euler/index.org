@@ -13,7 +13,7 @@ is all this math useful in real-life?"
 
 Yet, the point of math education at middle- and high-school levels is to teach
 /problem-solving/. Unfortunately, at the level its introduced, students are
-simply not equipped to /actually solve/ problems with infinite limits--that's
+simply not equipped to /actually solve/ problems with infinite limits---that's
 what calculus is for, which many never take. So, scores of students are left
 with an impression of \(e\) as mysterious and magical.[fn:1]
 
@@ -23,7 +23,7 @@ to put \(e\) on similar footing, starting with geometry and calculus and
 arriving at the familiar compound interest formula only at the end.
 
 * Geometry → Special functions
-Often math invents new operations--special functions--to solve geometry
+Often math invents new operations---special functions---to solve geometry
 problems. For example, the Pythagorean theorem
 \begin{align}
 \label{eq:pytha}
@@ -95,17 +95,15 @@ both constants arise from integrals that compute geometric quantities (circle
 perimeter, hyperbola area) and both require special functions to express the answers.
 
 * What's this all got to do with exponentiation?
-So, we have a definition of \(e\) as it relates to the area under a
-hyperbola. What does that have to do with exponentiation?
-
-At this point, nothing--and that's normal. The fact that \(\pi\) is defined by
-circle geometry doesn't immediately connect to side length ratios of right
-triangles either. To make this connection, we have to actually study the
-trigonometric functions, not just define them like in \eqref{eq:pidef}. For our
-case, let's study \(\exp\) and \(\ln\).
+So, we have a definition of \(e\) as it relates to the area under a hyperbola.
+At this point, \(e\) has nothing to do with exponentiation---but we should expect
+this. The fact that \(\pi\) is defined by circle geometry doesn't immediately
+connect to side length ratios of right triangles either. To make this
+connection, we have to actually study the trigonometric functions, not just
+define them. In our case, we study \(\exp\) and \(\ln\).
 
 It turns out that logarithms have a surprising property: if we rescale the
-length scale of the hyperbola in \eqref{eq:logint} by \(a\), the area scales as
+length dimension of the hyperbola in \eqref{eq:logint} by \(a\), the area scales as
 \begin{align}
 \int_{x_{1}}^{x_{2}} \frac{1}{t} \dd{t} = \int^{a x_{2}}_{a x_{1}} \frac{1}{t}\dd{t}
 \end{align}
@@ -113,7 +111,7 @@ from which one can derive[fn:2] the miraculous property
 \begin{align}
 \ln(xy) = \ln x + \ln y.
 \end{align}
-This identity--discovered by John Napier in 1614--is what made logarithms
+This identity---discovered by John Napier in 1614---is what made logarithms
 important in the first place: they turn multiplication into addition. This means
 that the inverse of the logarithm must turn addition into multiplication!
 \begin{align}
@@ -135,7 +133,9 @@ b^{3} &= \exp(3 \ln b) \\
      &= \exp(\ln b) \cdot \exp(\ln b) \cdot \exp(\ln b) \\
      &= b \cdot b \cdot b.
 \end{align*}
-
+While we have defined \(\exp, \ln\) geometrically, we can derive the important property
+\eqref{eq:explaw} which connects \(e\) with the operation of exponentiation as
+repeated multiplication.
 
 * Bernoulli's compound interest formula
 We can now answer the classical question: given an annual interest
@@ -174,19 +174,19 @@ But, at the very least we emphasize \(\exp\) and \(\ln\) as proper /functions/,
 as we do with \(\sin, \cos, \tan\), instead of as a generalization of
 exponentiation as repeated multiplication. This latter fact is a property of the
 special function, not its definition.[fn:4] Then, near the end of the
-curriculum, they can be introduced to formulas like Bernoulli's or the
+curriculum, students can be introduced to formulas like Bernoulli's or the
 differential equation
 \begin{align}
 \dv{x} f(x) = f(x)
 \end{align}
-/without/ the expectation that they need to mathematically evaluate any infinite
+/without/ the expectation that they should mathematically evaluate any infinite
 limits.
 
 Math formulas are intimidating when divorced from the necessary context and
 intuition. For trigonometric functions, this intuition comes from the simple
 geometry of circles and right triangles.  Unfortunately, for \(\exp, \ln\) this
 intuition comes only from the infinitesimal calculus of derivatives and
-integrals. Ideally, American math education should try to wrestle with this in
+integrals. Ideally, American math education should wrestle with this in
 an intelligent way.
 
 * Footnotes
