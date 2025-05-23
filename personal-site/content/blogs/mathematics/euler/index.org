@@ -215,12 +215,13 @@ which is accurate if \(x_{2}\) is very close to \(x_{1}\). Then,
 \begin{align}
 \ln(1 + x) = \int_{1}^{1+x} \frac{1}{t}\dd{t} \approx x.
 \end{align}
-For comprehensiveness, I will note that the right Riemann sum works just as well
+For comprehensiveness, I will note that the left Riemann sum isn't special:
+the right Riemann sum works just as well at this level of approximation
 \begin{align}
 \ln(1 + x) &= \int_{1}^{1+x} \frac{1}{t}\dd{t} \approx x(1+x) \\
            &\approx x
 \end{align}
-neglecting the \(x^{2}\) term which is much smaller than \(x\).
+by neglecting the \(x^{2}\) term which is much smaller than \(x\).
 
 
 [fn:4] In order to take the identity \eqref{eq:explaw} as a definition, we need
