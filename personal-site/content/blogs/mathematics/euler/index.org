@@ -1,0 +1,226 @@
+#+title: Euler's constant from geometry
+#+date: Thu May 22 14:42:01 CDT 2025
+#+author: Jesse Young Lin
+Recently Po Shen Loh released a preprint critiquing how American schools
+introduce Euler's number \(e \approx 2.7183\).
+Usually, it is presented in a financial context via the continuous compound interest formula
+\begin{align}
+\label{eq:bernoulliformula}
+e = \lim_{n \to \infty}\qty(1 + \frac{1}{n})^{n}.
+\end{align}
+This approach has a clear benefit: it gives teachers an immediate answer to "why
+is all this math useful in real-life?"
+
+Yet, the point of math education at middle- and high-school levels is to teach
+/problem-solving/. Unfortunately, at the level its introduced, students are
+simply not equipped to /actually solve/ problems with infinite limits--that's
+what calculus is for, which many never take. So, scores of students are left
+with an impression of \(e\) as mysterious and magical.[fn:1]
+
+In contrsat, other famous irrational numbers like \(\pi\) or even
+\(\sqrt{2}\) are taught from concrete, geometric problems. This blog post tries
+to put \(e\) on similar footing, starting with geometry and calculus and
+arriving at the familiar compound interest formula only at the end.
+
+* Geometry → Special functions
+Often math invents new operations--special functions--to solve geometry
+problems. For example, the Pythagorean theorem
+\begin{align}
+\label{eq:pytha}
+a^{2} + b^{2} = c^{2}
+\end{align}
+comes from the geometry of a right triangle with side lengths \(a, b, c\).
+
+We define, the square root function to solve for \(c\)
+\begin{align}
+\label{eq:pythasqrt}
+c(a,b) = \sqrt{a^{2} + b^{2}}.
+\end{align}
+
+
+Similarly the unit circle consists of all points \((x,y)\) with
+\begin{align}
+x^{2} + y^{2} = 1.
+\end{align}
+Solving for \(y(x)\)
+\begin{align}
+\label{eq:circle}
+y(x) = \sqrt{1-x^{2}}
+\end{align}
+we can now compute the perimeter of a circle
+\begin{align}
+\label{eq:circleperimeter}
+P = 2\int_{-1}^{1} \frac{1}{\sqrt{1-x^{2}}} \dd{x} = 2\pi.
+\end{align}
+The integral in \eqref{eq:circleperimeter} is given in general by the special
+function \(\arcsin\), so we are led to a /definition/ of the constant \(\pi\):
+\begin{align}
+\label{eq:pidef}
+\pi := 2 \arcsin(1).
+\end{align}
+The equation \eqref{eq:pidef} is exactly the definition that "\(\pi\) is
+one-half the perimeter of a circle with radius 1", expressed as a mathematical
+equation using the special function \(\arcsin\), which we view as an operation
+that numerically answers a geometric problem.
+
+* Logarithms and Euler's constant
+Let's try the same approach with a new curve: the hyperbola \(y(x) = 1/x\), defined
+for \(x > 0\).
+The area under the curve from \(1\) to some point \(x\) is given by
+\begin{align}
+\label{eq:hyperbolaarea}
+A(x) = \int_{1}^{x} \frac{1}{y} \dd{y}
+\end{align}
+We don't know how to evaluate this integral, but we can simply define it as a
+new special function
+\begin{align}
+\label{eq:logint}
+\ln x := \int_{1}^{x} 1/y \dd{y}
+\end{align}
+called the *logarithm*. Even without computing it, we can see qualitatively
+that: the area is positive for \(x>1\), zero at \(x=1\), and strictly increases
+as \(x\) increases.
+
+So there must be some number \(e > 0\) for which
+\begin{align}
+\label{eq:euler}
+\ln e = 1.
+\end{align}
+Let's define the inverse of the logarithm as the exponential function \(\exp\)
+\begin{align}
+e := \exp(1).
+\end{align}
+Now we have an exact parallel to the definition of \(\pi\) in \eqref{eq:pidef}:
+both constants arise from integrals that compute geometric quantities (circle
+perimeter, hyperbola area) and both require special functions to express the answers.
+
+* What's this all got to do with exponentiation?
+So, we have a definition of \(e\) as it relates to the area under a
+hyperbola. What does that have to do with exponentiation?
+
+At this point, nothing--and that's normal. The fact that \(\pi\) is defined by
+circle geometry doesn't immediately connect to side length ratios of right
+triangles either. To make this connection, we have to actually study the
+trigonometric functions, not just define them like in \eqref{eq:pidef}. For our
+case, let's study \(\exp\) and \(\ln\).
+
+It turns out that logarithms have a surprising property: if we rescale the
+length scale of the hyperbola in \eqref{eq:logint} by \(a\), the area scales as
+\begin{align}
+\int_{x_{1}}^{x_{2}} \frac{1}{y} \dd{y} = \int^{a x_{2}}_{a x_{1}} \frac{1}{y}\dd{y}
+\end{align}
+from which one can derive[fn:2] the miraculous property
+\begin{align}
+\ln(xy) = \ln x + \ln y.
+\end{align}
+This identity--discovered by John Napier in 1614--is what made logarithms
+important in the first place: they turn multiplication into addition. This means
+that the inverse of the logarithm must turn addition into multiplication!
+\begin{align}
+\label{eq:explaw}
+\exp(x + y) = \exp(x)\exp(y).
+\end{align}
+With this property and the fact that the special functions \(\exp\) and \(\ln\)
+are defined for real numbers, we can generalize the definition of
+exponentiation beyond integers: for any base
+\(b>0\),
+\begin{align}
+b^{x} := \exp(x \ln b).
+\end{align}
+If \(x\) happens to be an integer, we recover the usual definition, for example
+if \(x = 3\)
+\begin{align*}
+b^{3} &= \exp(3 \ln b) \\
+     &= \exp(\ln b + \ln b + \ln b) \\
+     &= \exp(\ln b) \cdot \exp(\ln b) \cdot \exp(\ln b) \\
+     &= b \cdot b \cdot b.
+\end{align*}
+
+
+* Bernoulli's compound interest formula
+We can now answer the classical question: given an annual interest
+rate \(R\), what is the equivalent continuously compounded interest rate \(r\)?
+That is:
+\begin{align}
+1+R = \lim_{n \to \infty}\qty(1 + \frac{r}{n})^{n}.
+\end{align}
+Taking logarithms,
+\begin{align}
+\ln\qty[ \qty(1+\frac{r}{n})^{n}] = n \ln(1 + \frac{r}{n}).
+\end{align}
+For large \(n\), \(r/n\) is small and we can estimate[fn:3]
+\begin{align}
+\ln(1 + \frac{r}{n}) \approx \frac{r}{n}
+\end{align}
+and we have
+\begin{align}
+\ln(1+R) = \lim_{n \to \infty} n \ln(1 + \frac{r}{n}) = r
+\end{align}
+therefore taking \(\exp\) of both sides gives
+\begin{align}
+1 + R &= \exp(r)
+\end{align}
+as we saw in the beginning with \eqref{eq:bernoulliformula}.
+
+* A function-first pedagogy
+The conceptual and mathematical motivation for studying \(e\) depends on ideas
+from calculus. Still, it's possible to present the special functions \(\exp,
+\ln\) without it, in the same way trigonometric functions are presented,
+focusing on its algebraic properties like \eqref{eq:explaw}. Given their
+importance in e.g., defining pH in high school chemistry, deferring until a
+proper calculus course may be impractical.
+
+But, at the very least we emphasize \(\exp\) and \(\ln\) as proper /functions/,
+as we do with \(\sin, \cos, \tan\), instead of as a generalization of
+exponentiation as repeated multiplication. This latter fact is a property of the
+special function, not its definition.[fn:4] Then, near the end of the
+curriculum, they can be introduced to formulas like Bernoulli's or the
+differential equation
+\begin{align}
+\dv{x} f(x) = f(x)
+\end{align}
+/without/ the expectation that they need to mathematically evaluate any infinite
+limits.
+
+Math formulas are intimidating when divorced from the necessary context and
+intuition. For trigonometric functions, this intuition comes from the simple
+geometry of circles and right triangles.  Unfortunately, for \(\exp, \ln\) this
+intuition comes only from the infinitesimal calculus of derivatives and
+integrals. Ideally, American math education should try to wrestle with this in
+an intelligent way.
+
+* Footnotes
+
+[fn:1] Not even mentioning the even more mystical
+\begin{align}
+e^{i \pi} = -1
+\end{align}
+which abounds in "pop math" Youtube.
+
+[fn:2] For \(x_2 \geq x_{1} > 1\), we have
+\begin{align*}
+\ln(x_{1}x_{2}) &= \int_{1}^{x_{1}x_{2}} \frac{1}{y}\dd{y} \\
+      &= \int^{x_{1}}_{1/x_{2}} \frac{1}{y} \dd{y} \\
+      &= \int_{1/x_{2}}^{1} \frac{1}{y} \dd{y} + \int_{1}^{x_{1}} \frac{1}{y} \dd{y} \\
+      &= \int_{1}^{x_{2}} \frac{1}{y} \dd{y} + \int_{1}^{x_{1}} \frac{1}{y} \dd{y} \\
+      &= \ln x_{2} + \ln x_{1}.
+\end{align*}
+
+[fn:3] This follows if one derives the Taylor series for \(\ln\), alternatively
+one can proceed from the integral definition, using the left Riemann sum estimate
+\begin{align}
+\int_{x_{1}}^{x_{2}} f(x) \dd{x} \approx (x_{2} - x_{1})f(x_{1}).
+\end{align}
+which is accurate if \(x_{2}\) is very close to \(x_{1}\). Then,
+\begin{align}
+\ln(1 + x) = \int_{1}^{1+x} \frac{1}{y}\dd{y} \approx x.
+\end{align}
+
+[fn:4] In order to take the identity \eqref{eq:explaw} as a definition, we need
+to show that \(\exp\) is the unique function that satisfies it among some class.
+In fact this is true for the class of continuous functions... showing this fact
+is probably not an effective teaching plan at the high school level.
+
+An equally ambitious, but logically coherent, plan would be to introduce
+\(\exp\) as a generalization of repeated multiplication, and \(\sin, \cos\) as a
+generalization of repeated complex multiplication.
