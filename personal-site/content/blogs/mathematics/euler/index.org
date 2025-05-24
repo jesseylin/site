@@ -1,6 +1,5 @@
 #+title: Euler's constant from geometry
 #+date: Thu May 22 14:42:01 CDT 2025
-#+author: Jesse Young Lin
 Recently Po Shen Loh made a [[https://www.poshenloh.com/e/][post]] critiquing how American schools
 introduce Euler's number \(e \approx 2.7183\).
 Usually, it is presented in a financial context via the continuous compound interest formula

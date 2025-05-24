@@ -12,9 +12,9 @@ title = "Jesse Young Lin"
   mainSections = ["projects", "blogs"]
   description = "params.description"
 
-[author]
+[params.author]
   name = "Jesse Young Lin"
-  image = "images/profile.jpg"
+  image = "img/profile.jpg"
   headline = "Physics PhD student at the University of Chicago"
   bio = "I have a biography here."
   links = [

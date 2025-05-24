@@ -1,6 +1,5 @@
 #+title: Building a Static Site with Nix
 #+date: Mon Jan  1 00:58:32 CST 2024
-#+author: Jesse Young Lin
 
 To start 2024, I built this website using Nix. This blogpost is a very brief
 summary of this process, assuming some basic familiarity with Nix syntax. It
