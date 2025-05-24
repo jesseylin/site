@@ -46,19 +46,34 @@ Solving for \(y(x)\)
 \label{eq:circle}
 y(x) = \sqrt{1-x^{2}}
 \end{align}
-we can now compute the perimeter of a circle
+we can now find the area of a circle by computing the area under the curve
+\(y(x)\) \eqref{eq:circle}
 \begin{align}
-\label{eq:circleperimeter}
-P = 2\int_{-1}^{1} \frac{1}{\sqrt{1-x^{2}}} \dd{x} = 2\pi.
+\label{eq:circlearea}
+A = 4\int_{0}^{1} \sqrt{1-x^{2}} \dd{x} = \frac{\arcsin(1)}{2}
 \end{align}
-The integral in \eqref{eq:circleperimeter} is given in general by the special
+
+{{< figure
+        src="images/circle2.svg"
+        alt="Semicircle curve with area integration"
+        caption="Integrating the area of a circle."
+        class="mx-auto my-0 bounded-md dark:invert"
+>}}
+
+
+# {{< rawhtml >}} <img src="/blogs/mathematics/euler/images/circle2.svg"
+#      style="filter: invert(1)"
+#      class="mx-auto my-0"
+#      alt="test"> {{< /rawhtml >}}
+
+The integral in \eqref{eq:circlearea} is given in general by the special
 function \(\arcsin\), so we are led to a /definition/ of the constant \(\pi\):
 \begin{align}
 \label{eq:pidef}
 \pi := 2 \arcsin(1).
 \end{align}
 The equation \eqref{eq:pidef} is exactly the definition that "\(\pi\) is
-one-half the perimeter of a circle with radius 1", expressed as a mathematical
+the area of a circle with radius 1", expressed as a mathematical
 equation using the special function \(\arcsin\), which we view as an operation
 that numerically answers a geometric problem.
 
@@ -70,6 +85,13 @@ The area under the curve from \(1\) to some point \(x\) is given by
 \label{eq:hyperbolaarea}
 A(x) = \int_{1}^{x} \frac{1}{t} \dd{t}
 \end{align}
+{{< figure
+        src="images/hyperbola2.svg"
+        alt="Rectangular hyperbola with area integration"
+        caption="Integrating under a hyperbola."
+        class="mx-auto my-0 bounded-md dark:invert"
+>}}
+
 We don't know how to evaluate this integral, but we can simply define it as a
 new special function
 \begin{align}
@@ -85,13 +107,13 @@ So there must be some number \(e > 0\) for which
 \label{eq:euler}
 \ln e = 1.
 \end{align}
-Let's define the inverse of the logarithm as the exponential function \(\exp\)
+Let's define the inverse of the logarithm as the *exponential* \(\exp\)
 \begin{align}
 e := \exp(1).
 \end{align}
 Now we have an exact parallel to the definition of \(\pi\) in \eqref{eq:pidef}:
-both constants arise from integrals that compute geometric quantities (circle
-perimeter, hyperbola area) and both require special functions to express the answers.
+both constants arise from integrals that compute geometric quantities (areas
+under curves) and both require special functions to express the answers.
 
 * What's this all got to do with exponentiation?
 So, we have a definition of \(e\) as it relates to the area under a hyperbola.
@@ -169,7 +191,7 @@ focusing on its algebraic properties like \eqref{eq:explaw}. Given their
 importance in e.g., defining pH in high school chemistry, deferring until a
 proper calculus course may be impractical.
 
-But, at the very least we emphasize \(\exp\) and \(\ln\) as proper /functions/,
+But, at the very least we can emphasize \(\exp\) and \(\ln\) as proper /functions/,
 as we do with \(\sin, \cos, \tan\), instead of as a generalization of
 exponentiation as repeated multiplication. This latter fact is a property of the
 special function, not its definition.[fn:4] Then, near the end of the
