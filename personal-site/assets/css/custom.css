@@ -1,3 +1,39 @@
+/*
+  This rule applies a filter to elements with the class 'dark:invert'
+  when they are inside an element with the class 'dark'.
+  This is commonly used for dark mode themes to visually invert colors
+  (e.g., turning black text white and white backgrounds black)
+  and adjust hue/brightness for better readability in dark mode.
+*/
 .dark .dark\:invert {
     filter: invert(1) hue-rotate(180deg) brightness(0.831);
+}
+
+/*
+  This rule applies to elements with the class 'footnote-body'.
+  'display: contents;' makes the 'footnote-body' element itself
+  "disappear" from the layout tree. It doesn't render its own box,
+  but its children are rendered directly as if they were children
+  of the 'footnote-body's parent element.
+  This is useful for restructuring the DOM visually without changing
+  the actual HTML structure. In this case, it helps to eliminate
+  the line break that a <div> (which 'footnote-body' likely is)
+  would normally create.
+*/
+.footnote-body {
+    display: contents;
+}
+
+/*
+  This rule targets all direct children (>) of elements with the class 'footnote-body'.
+  'display: inline;' makes these child elements behave like inline content,
+  meaning they will flow on the same line as surrounding text and
+  only take up as much width as their content requires.
+  This is crucial in conjunction with 'display: contents;' on the parent
+  (.footnote-body) to prevent the children from creating new line breaks.
+  Without this, even if '.footnote-body' disappears, its children (e.g., <p> tags)
+  would still act as block-level elements and force new lines.
+*/
+.footnote-body > * {
+    display: inline;
 }
