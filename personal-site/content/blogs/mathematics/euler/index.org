@@ -60,12 +60,6 @@ A = 4\int_{0}^{1} \sqrt{1-x^{2}} \dd{x} = \frac{\arcsin(1)}{2}
         class="mx-auto my-0 bounded-md dark:invert"
 >}}
 
-
-# {{< rawhtml >}} <img src="/blogs/mathematics/euler/images/circle2.svg"
-#      style="filter: invert(1)"
-#      class="mx-auto my-0"
-#      alt="test"> {{< /rawhtml >}}
-
 The integral in \eqref{eq:circlearea} is given in general by the special
 function \(\arcsin\), so we are led to a /definition/ of the constant \(\pi\):
 \begin{align}
