@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
       owner = "jpanther";
       repo = "congo";
       rev = "v2.11.0";
-      sha256 = "sha256-J8aqvjRQUiI4+/N04U8gyryVmSpfxY/98xeT0T5H55I=";
+      sha256 = "sha256-30eyLI/U4pVMLBGCI4Rjt/GuwiHv3IuffosZB8dt6GA=";
     })
   ];
 
