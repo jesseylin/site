@@ -19,7 +19,8 @@ title = "Jesse Young Lin"
   bio = "I have a biography here."
   links = [
           { email = "mailto:jylin@uchicago.edu" },
-          { github = "https://github.com/jesseylin" }
+          { github = "https://github.com/jesseylin" },
+          { bluesky = "https://bsky.app/profile/jesseylin.com"}
   ]
   #   { email = "mailto:hello@your_domain.com" },
   #   { link = "https://link-to-some-website.com/" },
