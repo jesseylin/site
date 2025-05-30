@@ -1,5 +1,5 @@
 #+title: Euler's constant from geometry
-#+date: [2025-05-24 Sat]
+#+date: [2025-05-30 Fri]
 Recently Po Shen Loh made a [[https://www.poshenloh.com/e/][post]] critiquing how American schools
 introduce Euler's number \(e \approx 2.7183\).
 Usually, it is presented in a financial context via the continuous compound interest formula
@@ -192,6 +192,7 @@ special function, not its definition.[fn:4] Then, near the end of the
 curriculum, students can be introduced to formulas like Bernoulli's or the
 differential equation
 \begin{align}
+\label{eq:diffeq}
 \dv{x} f(x) = f(x)
 \end{align}
 /without/ the expectation that they should mathematically evaluate any infinite
@@ -242,8 +243,23 @@ by neglecting the \(x^{2}\) term which is much smaller than \(x\).
 [fn:4] In order to take the identity \eqref{eq:explaw} as a definition, we need
 to show that \(\exp\) is the unique function that satisfies it among some class.
 In fact this is true for the class of continuous functions... showing this fact
-is probably not an effective teaching plan at the high school level.
-
-An equally ambitious, but logically coherent, plan would be to introduce
-\(\exp\) as a generalization of repeated multiplication, and \(\sin, \cos\) as a
-generalization of repeated complex multiplication.
+is probably not an effective teaching plan at the high school level. There is a simple sketch of this idea if we consider only differentiable
+functions \(f\) (and know the theory of differential equations). Then,
+\begin{align}
+f(x+0) = f(x)f(0)
+\end{align}
+implies that \(f(0) = 1\). Next,
+\begin{align}
+\frac{f(x+y) - f(x)}{y} = \frac{f(x)\qty[f(y) - 1]}{y}.
+\end{align}
+As \(y \to 0\), we have
+\begin{align}
+f'(x) = f(x)f'(0).
+\end{align}
+This is the differential equation of \eqref{eq:diffeq} which defines the exponential function, its
+solution is
+\begin{align}
+f(x) = \exp(cx)
+\end{align}
+where \(c = f'(0)\) is just our choice of what to call the derivative of the
+function \(f\) at zero.
