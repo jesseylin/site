@@ -3,6 +3,7 @@
   stdenv,
   hugo,
   fetchFromGitHub,
+  progress-bar,
 }:
 stdenv.mkDerivation rec {
   name = "jesseylin.com";
@@ -43,5 +44,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/var/www/${name}
     cp -r personal-site/public/. $out/var/www/${name}
+    mkdir -p $out/var/www/${name}/progress-bar
+    cp -r ${progress-bar}/. $out/var/www/${name}/progress-bar
   '';
 }

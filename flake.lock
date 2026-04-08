@@ -34,10 +34,48 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1775423009,
+        "narHash": "sha256-vPKLpjhIVWdDrfiUM8atW6YkIggCEKdSAlJPzzhkQlw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "68d8aa3d661f0e6bd5862291b5bb263b2a6595c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "progress-bar": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1775661530,
+        "narHash": "sha256-JQOgnik87wEQGpI6WnIjLaRQSC0XeUB8c+pUZOwjoKg=",
+        "owner": "jesseylin",
+        "repo": "progress-bar",
+        "rev": "acaa39033d973dd7e69fb971657a0bc919900be4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jesseylin",
+        "repo": "progress-bar",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "progress-bar": "progress-bar"
       }
     },
     "systems": {
