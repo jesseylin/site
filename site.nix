@@ -31,6 +31,14 @@ stdenv.mkDerivation rec {
 
     chmod --recursive 777 source
     mkdir -p source/personal-site/themes
+    # The congo theme is tracked as a git submodule under
+    # personal-site/themes/congo AND also pinned via fetchFromGitHub above.
+    # This means `self` and the fetched source both lay claim to the same
+    # destination path, and the state of that path in `self` can vary
+    # between build environments. `cp -rT` forces "treat dest as the
+    # target, not as a parent" regardless of whether it already exists,
+    # which is the only form of the copy that's unambiguous across the
+    # two inputs.
     cp -rT congo source/personal-site/themes/congo
 
     runHook postUnpack
