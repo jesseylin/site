@@ -1,7 +1,6 @@
 {
   description = "Build for my static site.";
   inputs = {
-    self.submodules = true;
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
     progress-bar = {

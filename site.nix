@@ -30,7 +30,8 @@ stdenv.mkDerivation rec {
     done
 
     chmod --recursive 777 source
-    cp -r congo source/personal-site/themes
+    mkdir -p source/personal-site/themes
+    cp -r congo source/personal-site/themes/congo
 
     runHook postUnpack
   '';
