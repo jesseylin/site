@@ -1,0 +1,54 @@
+#+title: Inverse function theorem made easy
+#+date: [2026-04-14 Tue]
+#+draft: true
+
+When you first learn calculus, you learn how to take derivatives of inverse
+functions essentially by "treating the derivative like a fraction,"
+\begin{align}
+\label{eq:IFT}
+\dv{x}{y} = \frac{1}{\dv{y}{x}}
+\end{align}
+where abuse of notation \(x(y)\) for the inverse of the function \(y(x)\)
+slightly obscures what's going on. Therefore, I present two very simple
+derivations of the relation Eq. \eqref{eq:IFT}.
+
+In the first, we simply use the definition of an inverse function: \(y^{-1}(y(x))
+= x\). Differentiating both sides gives
+\begin{align}
+\label{eq:2}
+\eval{\dv{y^{-1}}{z}}_{z=y(x)} \dv{y}{x} = 1
+\end{align}
+which immediately gives the correct interpretation of the expression in Eq.
+\eqref{eq:IFT}, namely \(\dv{x}{y} = \eval{\dv{y^{-1}}{z}}_{z=y(x)}\). We see
+here that the deficiency is due to the notation. When we write \(\dv{x}{y}\),
+the \(y\) is a dummy variable whose value is not specified. The convention is
+that it is set to whatever value of \(y\) is implied by the rest of the
+expression. But here \(y\) is in fact a function so its value is the
+number \(y(x)\). The "correct" notation therefore is \(\dv{x}{y} =
+\dv{x}{y(x)}\), which we can't really use because \(x\) has two different
+meanings in the same expression: in the "numerator" it is a function, whereas in
+the "denominator" it is a number input to the function \(y\).
+
+In the second derivation, we use the definition of the derivative as a local linear
+approximation to a function. To do so, we Taylor expand both \(y(x)\) and \(x(y)\)
+\begin{align}
+\label{eq:localy}
+y(x) &= y(x_{0}) + \eval{\dv{y}{x}}_{x=x_0}(x-x_{0}) \\
+\label{eq:localx}
+x(y) &= x(y_{0}) + \eval{\dv{x}{y}}_{y=y_{0}}(y - y_{0}).
+\end{align}
+Equation \eqref{eq:localy} can be "solved for \(x\)" to yield 
+\begin{align}
+\label{eq:lagrangeinversion}
+x = x_{0} + \qty(\eval{\dv{y}{x}}_{x=x_{0}})^{-1}(y(x) - y(x_{0}))
+\end{align}
+which we can compare with Eq. \eqref{eq:localx} to see that if \(x_{0} =
+x(y_{0})\) and \(y(x_{0}) = y_{0}\), then
+\begin{align}
+\qty(\eval{\dv{y}{x}}_{x=x_{0}})^{-1} = \eval{\dv{x}{y}}_{y=y_{0}}.
+\end{align}
+This equation is very close in spirit to the original Eq. \eqref{eq:IFT},
+because here we have not committed on which variable \(y\) or \(x\) is a
+"function" of the other. Indeed the point geometrically is that they are both
+mutually functions of each other as long as we are looking closely enough in a
+local neighborhood of the point \((x_{0}, y_{0})\). 
