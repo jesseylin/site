@@ -6,6 +6,5 @@ Before my PhD, I graduated with a degree in physics and applied mathematics from
 Princeton University in 2022 and worked as a machine learning research engineer
 with the [[https://flowers.inria.fr][Flowers lab]] at Inria Bordeaux before my PhD.
 
-* About this site
-Presumably at some point this website will contain a faithful reproduction of my
-CV. For now it collects some random thoughts on software, physics, math, and the like.
+* Research
+*J. Y. Lin**, O. Granek*, J. Sodicoff, S. Kuehn, D. Pincus, V. Vitelli, "Natural Selection in the Wake of Catastrophe", [[https://arxiv.org/abs/2606.09040][arXiv:2606.09040]] (2026)
