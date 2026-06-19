@@ -1,0 +1,13 @@
+#+title: What if AI doesn't grow?
+#+date: [2026-06-19 Fri] 
+
+The problem with projections about the growth of AI is that they are just
+projections. By their nature, projections are right when their assumptions about
+reality are right. We don't linearly project the growth of toddlers and assume
+they will become 20 feet tall (and be very good in the NBA) because of our prior
+knowledge about what human growth dynamics are like. We don't have comparable
+knowledge about the growth dynamics of a new technology like LLMs. In hindsight
+we will see that some projections were right and some were wrong. "Pessimists
+sound smart. Optimists make money." I think optimism is great, but let's not get
+it confused with a law of nature.
+
